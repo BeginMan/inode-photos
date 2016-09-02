@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title><%= title%></title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
+    <body>
+        <h1><%=title%></h1>
+        <p>Upload photo</p>
+
+        <form method="post" enctype="multipart/form-data">
+            <p><input type="text" name="name_1" /></p>
+            <p><input type="file" name="photo_1" /></p>
+
+            <p><input type="text" name="name_2" /></p>
+            <p><input type="file" name="photo_2" /></p>
+
+            <p><input type="text" name="name_3" /></p>
+            <p><input type="file" name="photo_3" /></p>
+
+            <p><input type="submit" value="Upload"></p>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h2><%= title %></h2>
+    <p>Welcome to <%= title %></p>
+    <p><%=settings.title%>: <%=settings.author%></p>
+
+    <hr>
+  <p>Express photos</p>
+  <% photos.forEach(function (photo) { %>
+    <div class="photo">
+      <h2><%=photo.oriName%> (<%=(photo.size/1024).toFixed(2)%> KB)</h2>
+        <p><a href="/download/<%=photo._id%>">下载</a></p>
+        <a href="/view/<%=photo._id%>"><img src="/photos/<%=photo.name%>"></a>
+    </div>
+  <% })%>
+  </body>
+</html>
