@@ -15,7 +15,7 @@ var auth = require('./routes/auth');
 // 自定义中间件
 var messages = require('./lib/middleware/message');
 var user = require('./lib/middleware/user');
-
+var error = require('./lib/middleware/error');
 // ========================================================
 var app = express();
 
@@ -68,6 +68,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', photos);
 app.use('/auth', auth);
 
+app.use(error.notfound);
 
 
 // 404异常处理中间件
