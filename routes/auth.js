@@ -4,12 +4,16 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../lib/user');
+var validate = require('../lib/middleware/valid');
 
 router.get('/register', function (req, res, next) {
     res.render('auth/register', {title:'Resigter'})
 });
 
-router.post('/register', function (req, res, next) {
+router.post('/register',
+    validate.required(['user_name', 'user_pass']),
+    validate.lengthAbove('user_pass', 4),
+    function (req, res, next) {
     var data = req.body;
 
     User.getByName(data.user_name, function (err, user) {
