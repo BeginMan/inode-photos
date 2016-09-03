@@ -5,10 +5,16 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
 // 路由控制
 var photos = require('./routes/photos');
+var auth = require('./routes/auth');
+
+// 自定义中间件
+var messages = require('./lib/middleware/message');
+var user = require('./lib/middleware/user');
 
 // ========================================================
 var app = express();
@@ -20,6 +26,19 @@ app.set('view engine', 'ejs');
 // 其他自定义
 app.set('title', 'MyAPP');
 app.set('author', 'BeginMan');
+
+app.use(session({
+    secret:'nodePhoto!@#QAZ2wwS#D%^&*',
+    cookie: {
+        maxAge: 30 * 1000
+    },
+    resave: true,
+    saveUninitialized: true
+}));
+
+// 自定义中间件
+app.use(messages);
+app.use(user);
 
 
 // 打印app.locals 变量
@@ -43,8 +62,12 @@ app.use(cookieParser());
 // 静态资源
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 // 路由控制
 app.use('/', photos);
+app.use('/auth', auth);
+
 
 
 // 404异常处理中间件

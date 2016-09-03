@@ -10,7 +10,7 @@ var fs = require('fs');
 router.get('/', function(req, res, next) {
     Photo.find({}, function (err, photos) {
         if (err) return next(err);
-        res.render('photos', {
+        res.render('photos/photos', {
             title: 'Mongo Photo',
             photos: photos
         })

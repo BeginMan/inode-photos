@@ -1,0 +1,12 @@
+<% if (locals.user) { %>
+<div id="menu">
+    <span class="name"><%=user.name%></span>
+    <a href="/">upload</a>
+    <a href="/auth/logout">logout</a>
+</div>
+<% } else {%>
+<div class="menu">
+    <a href="/auth/login">login</a>
+    <a href="/auth/register">register</a>
+</div>
+<% } %>

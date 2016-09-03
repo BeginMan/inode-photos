@@ -1,6 +1,6 @@
 # inode-photos
 
-Node/express/mongodb/redis 组合 开发图片社交网站.
+Node/express/mongodb/redis 组合 开发图片社交网站.(DEMO)
 
 # Usage
 

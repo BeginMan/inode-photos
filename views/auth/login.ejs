@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<% include ../menu %>
+
+<h1><%= title %></h1>
+<h3><%= msg %></h3>
+
+<% include ../messages %>
+
+<form action="" method="post">
+    <p><input type="text" name="user_name"></p>
+
+    <p><input type="password" name="user_pass"></p>
+
+    <p><input type="submit" value="Sign Up"></p>
+</form>
+</body>
+</html>
